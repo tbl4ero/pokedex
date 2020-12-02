@@ -5,27 +5,8 @@ import GoBack from "../GoBack";
 import Spinner from "./../../Spinner";
 import StoreInterface from "./../../interfaces/store.interface";
 import { setAbility } from "./../../store/actions";
-import styled from "styled-components";
+import { Conrainer, NameTitle, DescriptionBox } from './Abilitypage.styles';
 
-const Conrainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const NameTitle = styled.h1`
-  text-align: center;
-  font-size: 80px;
-  color: white;
-  text-shadow: -2px 2px 1px black, 0 2px 1px black;
-`;
-
-const DescriptionBox = styled.div`
-  background: rgba(0, 0, 0, 0.2);
-  color: white;
-  padding: 30px;
-  max-width: 500px;
-`;
 
 const AbilityPage: React.FC<any> = (props) => {
   const { ability } = useSelector((state: StoreInterface) => ({

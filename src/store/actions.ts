@@ -1,11 +1,9 @@
-import { Pokemon } from "./../interfaces/pokemons.interface";
-
 export const setLoading = (loading: boolean) => ({
   type: "SET_LOADING",
   loading,
 });
 
-export const setPokemon = (pokemon: Pokemon, localLoader: Function) => async (
+export const setPokemon = (pokemon: any, localLoader: Function) => async (
   dispatch: Function
 ) => {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)

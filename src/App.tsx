@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import CardList from "./components/PokeCardList";
+import CardList from "./components/pokecardlist/PokeCardList";
 import { BrowserRouter, Route } from "react-router-dom";
-import PokePage from "./components/pokepage/PokePage";
+import PokePage from "./components/pokepage/pokepage/PokePage";
 import AbilityPage from "./components/abilitypage/AbilityPage";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import store from "./store/store";
