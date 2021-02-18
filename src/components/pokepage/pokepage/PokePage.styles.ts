@@ -1,15 +1,6 @@
 import styled from "styled-components";
 import { typeColors } from "./../../../constants";
 
-export const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-export const Container = styled.div`
-  margin: 0 auto;
-`;
 
 export const AttributeHeader = styled.h2`
   color: white;

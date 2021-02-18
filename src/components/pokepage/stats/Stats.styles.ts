@@ -13,6 +13,7 @@ export const StyledBar = styled.div<{ statValue: number }>`
     width: ${(props) => (props.statValue / 600) * 100}%;
     background: white;
     height: 10px;
+    border-radius: 0 3px 3px 0;   
     position: absolute;
   }
   @media (max-width: 410px) {
@@ -24,6 +25,7 @@ export const StyledStat = styled.div`
   transform: skewY(-5deg);
   display: flex;
   margin-top: 20px;
+  align-items: center;
   color: white;
   @media (max-width: 640px) {
     transform: none;

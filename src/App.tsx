@@ -3,11 +3,16 @@ import CardList from "./components/pokecardlist/PokeCardList";
 import { BrowserRouter, Route } from "react-router-dom";
 import PokePage from "./components/pokepage/pokepage/PokePage";
 import AbilityPage from "./components/abilitypage/AbilityPage";
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./store/store";
 import { getInitialCards } from "./store/actions";
-import Spinner from './Spinner';
-import StateInterface from './interfaces/store.interface';
+
+export interface StoreInterface  {
+  loading: boolean,
+  currentPokemon: any,
+  currentAbility: any,
+  pokemonList: any[],
+}
 
 const Main = () => {
   const [loading, setLoading] = useState(true);

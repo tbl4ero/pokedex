@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Conrainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const NameTitle = styled.h1`
   text-align: center;
   font-size: 80px;

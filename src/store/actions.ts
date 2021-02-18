@@ -23,7 +23,6 @@ export const setAbility = (ability: any, localLoader: Function) => async (
   const newAbility = await fetch(
     `https://pokeapi.co/api/v2/ability/${ability}`
   ).then((resp) => resp.json());
-  console.log(newAbility);
   dispatch({
     type: "SET_ABILITY",
     ability: newAbility,

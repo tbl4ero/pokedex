@@ -8,7 +8,7 @@ import {
 import thunk from "redux-thunk";
 import reducers from "./reducers";
 
-interface StoreInterface  {
+export interface StoreInterface  {
   loading: boolean,
   currentPokemon: any,
   currentAbility: any,

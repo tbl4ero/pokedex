@@ -1,64 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
-import GoBack from "../../GoBack";
 import { Link } from "react-router-dom";
-import Spinner from "../../../Spinner";
 import Stats from "../stats/Stats";
-import StoreInterface from "../../../interfaces/store.interface";
 import { setPokemon } from "../../../store/actions";
 import { 
-  PageContainer, Container, AttributeHeader, NameTitle, PropertiesContainer, TypeElement 
+ AttributeHeader, NameTitle, PropertiesContainer, TypeElement 
 } from './PokePage.styles';
+import SamplePage from "../../samplepage/SamplePage";
 
-const PokePage: React.FC<any> = (props) => {
-  const [loading, setLoading] = useState(true);
-  const { pokemon } = useSelector((state: StoreInterface) => ({
-    pokemon: state.currentPokemon,
-    loading: state.loading,
-  }));
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setLoading(true);
-    dispatch(setPokemon(props.match.params.name, setLoading));
-  }, []);
+const PokeComp = (props: any) => {
+  console.log(props);
+  return (<>
+    <NameTitle>{props.match.params.name}</NameTitle>
+    <Stats pokemon={props.data} />
+    <PropertiesContainer direction="column">
+      <AttributeHeader>TYPES</AttributeHeader>
+      <PropertiesContainer>
+        {props.data.types.map((type: any) => (
+          <TypeElement type={type.type.name}>
+            {type.type.name}
+          </TypeElement>
+        ))}
+      </PropertiesContainer>
+    </PropertiesContainer>
+    <PropertiesContainer direction="column">
+      <AttributeHeader>ABILITES</AttributeHeader>
+      {props.data.abilities.map((ability: any) => (
+        <Link to={`/ability/${ability.ability.name}`}>
+          {ability.ability.name.split("-").join(" ")}
+        </Link>
+      ))}
+    </PropertiesContainer>
+  </>);
+      }
 
-  return (
-    <React.Fragment>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <React.Fragment>
-          <PageContainer>
-            <GoBack route={props.history.goBack} />
-            <Container>
-              <NameTitle>{pokemon.name}</NameTitle>
-              <Stats pokemon={pokemon} />
-              <PropertiesContainer direction="column">
-                <AttributeHeader>TYPES</AttributeHeader>
-                <PropertiesContainer>
-                  {pokemon.types.map((type: any) => (
-                    <TypeElement type={type.type.name}>
-                      {type.type.name}
-                    </TypeElement>
-                  ))}
-                </PropertiesContainer>
-              </PropertiesContainer>
-              <PropertiesContainer direction="column">
-                <AttributeHeader>ABILITES</AttributeHeader>
-                {pokemon.abilities.map((ability: any) => (
-                  <Link to={`/ability/${ability.ability.name}`}>
-                    {ability.ability.name.split("-").join(" ")}
-                  </Link>
-                ))}
-              </PropertiesContainer>
-            </Container>
-          </PageContainer>
-        </React.Fragment>
-      )}
-    </React.Fragment>
-  );
-};
+const PokePage = (props: any) => (
+  <SamplePage 
+    WrappedComponent={PokeComp} 
+    match={props.match} 
+    setData={setPokemon} 
+    selector="currentPokemon" 
+    history={props.history} 
+  />
 
+);
 export default PokePage;

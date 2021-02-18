@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import PokeCard from "../pokecard/PokeCard";
 import Spinner from "../../Spinner";
-import StoreInterface from "../../interfaces/store.interface";
+import StoreInterface from "../../types/store.interface";
 import { getInitialCards } from "../../store/actions";
 import { StyledList, SearchField, CardGrid } from './PokeCardList.styles';
 
