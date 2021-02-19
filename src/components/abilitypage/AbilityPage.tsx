@@ -1,41 +1,39 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-import StoreInterface from "./../../types/store.interface";
+import SamplePage from './../samplepage/SamplePage';
+import { setAbility } from "./../../store/actions";
 import { NameTitle, DescriptionBox } from './Abilitypage.styles';
 
 
-const AbilityPage: React.FC<any> = (props) => {
-  const { ability } = useSelector((state: StoreInterface) => ({
-    ability: state.currentAbility,
-  }));
+const AbilityComp: React.FC<any> = (props) => (
+  <>
+    <NameTitle>
+      {props.data.name.split("-").join(" ")}
+    </NameTitle>
+    <DescriptionBox>
+      <div>
+        {
+          props.data.flavor_text_entries.filter(
+            (entry: { language: { name: string } }) =>
+              entry.language.name === "en"
+          )[0].flavor_text
+        }
+      </div>
+      <br />
+      <div>
+        {
+          props.data.effect_entries.filter(
+            (entry: { language: { name: string } }) =>
+              entry.language.name === "en"
+          )[0].short_effect
+        }
+      </div>
+    </DescriptionBox>
+  </>
+);
 
-  return (
-    <>
-      <NameTitle>
-        {props.match.params.name.split("-").join(" ")}
-      </NameTitle>
-      <DescriptionBox>
-        <div>
-          {
-            ability.flavor_text_entries.filter(
-              (entry: { language: { name: string } }) =>
-                entry.language.name === "en"
-            )[0].flavor_text
-          }
-        </div>
-        <br />
-        <div>
-          {
-            ability.effect_entries.filter(
-              (entry: { language: { name: string } }) =>
-                entry.language.name === "en"
-            )[0].short_effect
-          }
-        </div>
-      </DescriptionBox>
-    </>
-  );
-};
+const AbilityPage: React.FC<any> = (props: any) => (
+  <SamplePage {...props} WrappedComponent={AbilityComp} setData={setAbility} selector="currentAbility" />
+)
 
 export default AbilityPage;
