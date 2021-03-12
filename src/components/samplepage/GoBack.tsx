@@ -5,11 +5,11 @@ import styled from "styled-components";
 const GoBackArrow = styled(ArrowBack)`
   margin: 40px;
   cursor: pointer;
-  color: white;
+  color: rgba(0, 0, 0, 0.2);;
   transition: 0.2s ease-in-out;
   margin-bottom: 0;
   :hover {
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.6);
   }
 `;
 

@@ -23,7 +23,7 @@ const PokeCard: React.FC<any> = (props) => {
           onClick={() => dispatch(setLoading(true))}
           to={`pokemon/${pokemon.name}`}
         >
-          <StyledCard>
+          <StyledCard background={pokemon.types[0].type.name}>
             <img
               height="150"
               width="150"
