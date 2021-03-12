@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { typeColors } from "./../../../constants";
-
-
-export const AttributeHeader = styled.h2`
-  color: white;
-  font-size: 30px;
-`;
+import { Link } from 'react-router-dom';
+import { typeColors } from "../../../constants";
 
 export const NameTitle = styled.h1`
   text-align: center;
@@ -17,21 +12,29 @@ export const NameTitle = styled.h1`
   }
 `;
 
-export const PropertiesContainer = styled.div<{ direction?: string }>`
-  display: flex;
-  padding: 20px;
-  flex-direction: ${(props) => props.direction};
-  @media (max-width: 800px) and (min-width: 640px) {
-    margin-left: 100px;
-  }
-`;
-
 export const TypeElement = styled.div<{ type: string }>`
-  display: flex;
-  padding: 5px;
+  display: inline;  
+  padding: 8px;
   background: ${(props) => typeColors[props.type]};
   color: white;
-  font-size: 15px;
+  font-size: 18px;
   margin-left: 5px;
   border-radius: 3px;
+`;
+
+export const AbilitiesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px; 
+`;
+
+export const StyledLink = styled(Link)`
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 1px 0;
+  :hover {
+    color: #f5f5f5;
+  }
 `;

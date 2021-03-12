@@ -1,6 +1,5 @@
 import React from "react";
 import { statTypes } from "../../../constants";
-
 import { StyledBar, StyledStat, StatsBox, Image } from './Stats.styles';
 
 const StatBar: React.FC<{ statValue: number; statName: string }> = (props) => {
@@ -20,6 +19,7 @@ const Stats: React.FC<any> = (props) => {
         style={{
           display: "flex",
           margin: "0 auto",
+          background: props.bgColor,
           flexWrap: "wrap",
           justifyContent: "center",
         }}

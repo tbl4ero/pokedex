@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GoBack from "./../GoBack";
+
+import GoBack from "./GoBack";
 import Spinner from "./../../Spinner";
 import { PageContainer, Container } from "./SamplePage.styles";
 
@@ -9,13 +10,15 @@ const SamplePage = ({
   match, 
   setData, 
   history,
-  selector }: any) => {
+  selector,
+}: any) => {
 
   const [loading, setLoading] = useState(true);
+  
   const dispatch = useDispatch();
   const { data } = useSelector((state: any) => ({
     data: state[selector]
-  }))
+  }));
 
   useEffect(() => {
     dispatch(setData(match.params.name, setLoading));
@@ -25,7 +28,7 @@ const SamplePage = ({
     {loading
         ? <Spinner /> 
         : (
-            <PageContainer>
+            <PageContainer bg={data.bgColor}>
                 <GoBack route={history.goBack} />
                 <Container>
                   <WrappedComponent {...{match, setData, history, data}} /> 

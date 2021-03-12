@@ -31,3 +31,19 @@ export const typeColors: {
     "special-defense": "Sp. Defense",
     speed: "Speed",
   };
+
+
+export const pokemonColors: {
+  [key: string]: string
+} = {
+  blue: '#D1E4FF',
+  green: '#A6CA9E',
+  black: '#4D4B4C',
+  brown: '#CEA571',
+  gray: '#B0B2C1',
+  pink: '#F1C9D2',
+  purple: '#61486E',
+  red: '#DD534B',
+  white: '#E5EBF2',
+  yellow: '#F6CC52'
+}

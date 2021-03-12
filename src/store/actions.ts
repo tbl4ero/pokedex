@@ -1,3 +1,7 @@
+import { prominent } from 'color.js'
+
+
+
 export const setLoading = (loading: boolean) => ({
   type: "SET_LOADING",
   loading,
@@ -6,22 +10,26 @@ export const setLoading = (loading: boolean) => ({
 export const setPokemon = (pokemon: any, localLoader: Function) => async (
   dispatch: Function
 ) => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-    .then((resp) => resp.json())
-    .then((data) => {
-      dispatch({
-        type: "SET_POKEMON",
-        pokemon: data,
-      });
-      localLoader(false);
+  const pokemonData =  await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    .then((resp) => resp.json());
+  const speciesData = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)
+    .then((resp => resp.json()));
+  const bgColor = await prominent(pokemonData.sprites.other["official-artwork"].front_default).then(colors => colors[2].toString());
+  console.log(bgColor);
+    const data = { ...pokemonData, ...speciesData, bgColor };
+    dispatch({
+      type: "SET_POKEMON",
+      pokemon: data,
     });
+    localLoader(false);
 };
 
 export const setAbility = (ability: any, localLoader: Function) => async (
   dispatch: Function
 ) => {
   const newAbility = await fetch(
-    `https://pokeapi.co/api/v2/ability/${ability}`
+    `https://pokeapi.co/api/v2/ability/${ability}`,
+    {mode: 'cors'}
   ).then((resp) => resp.json());
   dispatch({
     type: "SET_ABILITY",
@@ -34,7 +42,7 @@ export const getInitialCards = (localLoader: Function) => async (
   dispatch: Function
 ) => {
   const list = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=20&offset=70`
+    `https://pokeapi.co/api/v2/pokemon?limit=200&offset=70`
   ).then((resp) => resp.json());
   dispatch({
     type: "INIT_LIST",
