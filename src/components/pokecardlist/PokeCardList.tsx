@@ -56,26 +56,28 @@ const CardList: React.FC<PokemonList> = (props) => {
   const dispatch = useDispatch();
   const targetRef = useIntersection(() => console.log(1));  
 
+  useEffect(() => {
+    dispatch(getInitialCards(setLoading));
+  }, [])
 
   return (
-
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-          <Header />
-          <StyledList>
-            <CardGrid>
-              {pokemons &&
-                pokemons
-                  .filter((pokemon) => new RegExp(searchValue).test(pokemon.name))
-                  .map((pokemon, id) => (
-                    <PokeCard key={pokemon.name} pokemon={pokemon} />
-                  ))}
-            </CardGrid>
-          </StyledList>
-          {loading ? (
-          <Spinner />
-          ) : ""} 
-            <span style={{ height: '10px', width: '10px', background: 'red'}} ref={targetRef}  />
-        </div>
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Header />
+      <StyledList>
+        <CardGrid>
+          {pokemons &&
+            pokemons
+              .filter((pokemon) => new RegExp(searchValue).test(pokemon.name))
+              .map((pokemon, id) => (
+                <PokeCard key={pokemon.name} pokemon={pokemon} />
+              ))}
+        </CardGrid>
+      </StyledList>
+      {loading ? (
+      <Spinner />
+      ) : ""} 
+        <span style={{ height: '10px', width: '10px', background: 'red'}} ref={targetRef}  />
+    </div>
   );
 };
 
