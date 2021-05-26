@@ -20,7 +20,7 @@ const StyledSpinner = styled.svg`
   margin: -25px 0 0 -25px;
   width: 50px;
   height: 50px;
-  margin: 200px auto;
+  margin: 40px auto;
   
   & .path {
     stroke: #5652BF;

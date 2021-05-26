@@ -27,6 +27,7 @@ const Main = () => {
       style={{
         fontFamily: "Roboto",
         minHeight: "100vh",
+        background: '#EDEDED',
         display: "flex",
         flexWrap: "wrap",
       }}

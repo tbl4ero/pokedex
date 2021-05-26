@@ -2,11 +2,11 @@ import styled, { keyframes } from 'styled-components';
 
 const bgAnimation = (color: string) => keyframes`
   from {
-    background: white;
+    background: #EDEDED;
   }
 
   to {
-    transform: ${color};
+    background: ${color};
   }
 `;
 

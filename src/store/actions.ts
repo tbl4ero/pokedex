@@ -42,7 +42,7 @@ export const getInitialCards = (localLoader: Function) => async (
   dispatch: Function
 ) => {
   const list = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=200&offset=70`
+    `https://pokeapi.co/api/v2/pokemon?limit=25&offset=0`
   ).then((resp) => resp.json());
   dispatch({
     type: "INIT_LIST",

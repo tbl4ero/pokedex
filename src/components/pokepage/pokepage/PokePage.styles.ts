@@ -5,8 +5,9 @@ import { typeColors } from "../../../constants";
 export const NameTitle = styled.h1`
   text-align: center;
   font-size: 80px;
+  margin-bottom: 0;
   color: white;
-  text-shadow: -2px 2px 1px black, 0 2px 1px black;
+  text-shadow: 0 0 12px rgb(0 0 0 / 25%);
   @media (max-width: 640px) {
     font-size: 60px;
   }
