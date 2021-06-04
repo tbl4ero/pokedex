@@ -1,7 +1,6 @@
 import { prominent } from 'color.js'
 
 
-
 export const setLoading = (loading: boolean) => ({
   type: "SET_LOADING",
   loading,
@@ -38,15 +37,15 @@ export const setAbility = (ability: any, localLoader: Function) => async (
   localLoader(false);
 };
 
-export const getInitialCards = (localLoader: Function) => async (
+export const getCards = (localLoader: Function, count: any) => async (
   dispatch: Function
 ) => {
   const list = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=25&offset=0`
+    `https://pokeapi.co/api/v2/pokemon?limit=30&offset=${count}`
   ).then((resp) => resp.json());
   dispatch({
-    type: "INIT_LIST",
-    pokemonList: list.results,
+    type: "SET_CARDS",
+    cards: list.results,
   });
   localLoader(false);
 };
