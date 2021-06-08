@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { typeColors } from "../../../constants";
 
 export const StyledBar = styled.div<{ statValue: number }>`
   height: 10px;
@@ -78,13 +77,4 @@ export const PageContainer = styled.div<{ direction?: string, align?: string, ma
   align-items: flex-start;
   position: relative;
   justify-content: ${props => props.align || 'center'};
-`;
-
-export const TypeElement = styled.div<{ type: string }>`
-  display: flex;  
-  padding: 5px;
-  background: ${(props) => typeColors[props.type]};
-  border-radius: 50%;
-  margin-left: 5px;
-  border: 2px solid white;
 `;

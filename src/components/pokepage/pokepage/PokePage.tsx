@@ -4,7 +4,6 @@ import Stats from "../stats/Stats";
 import { setPokemon } from "../../../store/actions";
 import { NameTitle, TypeElement, StyledLink, AbilitiesContainer } from './PokePage.styles';
 import SamplePage from "../../samplepage/SamplePage";
-import InfoTabs from '../tabs/Tabs';
 
 const PokeComp = (props: any) => (
   <>
