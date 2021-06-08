@@ -1,5 +1,6 @@
 import React from "react";
 import { statTypes } from "../../../constants";
+import AbilityPage from "../../abilitypage/AbilityPage";
 import { StyledBar, StyledStat, StatsBox, Image, PageContainer, TypeElement } from './Stats.styles';
 
 
@@ -69,7 +70,27 @@ const Stats: React.FC<any> = (props) => {
               Area: {props.pokemon.habitat.name}
             </div>
           </div>
-
+          <div style={{
+            marginLeft: '5px'
+           }}>
+            <h2 style={{ 
+              color: 'white',
+              fontWeight: 500,
+              textShadow: 'rgb(0 0 0 / 25%) 0px 0px 12px'
+             }}>ABILIITIES:</h2>
+             <ul style={{ padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+               {props.pokemon.abilities.map((ability: any) => <li style={{
+                 color: 'white',
+                 listStyle: 'none',
+                 margin: '10px 0',
+                 cursor: 'pointer',
+                 fontSize: '18px',
+                 paddingBottom: '2px',
+                 borderBottom: '2px dotted black',
+                 textTransform: 'uppercase',
+               }}>{ability.ability.name}</li>)}
+             </ul>
+          </div>
         </PageContainer>
         <Image
             src={props.pokemon.sprites.other["official-artwork"].front_default}
