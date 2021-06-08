@@ -18,40 +18,13 @@ const Profile = (props: any) => (
       width: '270px',
       height: '100px'
       }}>
-        <ProfileElement style={{
-          padding: '10px 15px',
-          background: 'rgba(255,255,255,.75)',
-          height: '20px',
-          fontWeight: 'bolder',
-          textTransform: 'uppercase',
-          margin: '5px',
-          borderRadius: '14px',
-          boxShadow: '0 20px 25px -10px rgb(0 0 0 / 15%)'
-        }}>
+        <ProfileElement>
           Weight: {props.pokemon.weight}
         </ProfileElement>
-        <ProfileElement style={{
-          textTransform: 'uppercase',
-          padding: '10px 15px',
-          height: '20px',
-          margin: '5px',
-          background: 'rgba(255,255,255,.75)',
-          fontWeight: 'bolder',
-          borderRadius: '14px',
-          boxShadow: '0 20px 25px -10px rgb(0 0 0 / 15%)'
-        }}>
+        <ProfileElement>
           Height: {props.pokemon.height}
         </ProfileElement>
-        <ProfileElement style={{
-          textTransform: 'uppercase',
-          padding: '10px 15px',
-          height: '20px',
-          margin: '5px',
-          background: 'rgba(255,255,255,.75)',
-          fontWeight: 'bolder',
-          borderRadius: '14px',
-          boxShadow: '0 20px 25px -10px rgb(0 0 0 / 15%)'
-        }}>
+        <ProfileElement>
           Area: {props.pokemon.habitat.name}
         </ProfileElement>
       </div>

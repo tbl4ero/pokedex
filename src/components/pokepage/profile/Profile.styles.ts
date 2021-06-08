@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { typeColors } from "../../../constants";
 
+
 export const PageContainer = styled.div<{
   direction?: string;
   align?: string;
@@ -26,12 +27,12 @@ export const TypeElement = styled.div<{ type: string }>`
 `;
 
 export const ProfileElement = styled.div`
-    text-transform: uppercase;
-    padding: 10px 15px;
-    height: 20px;
-    margin: 5px;
-    background: rgba(255,255,255,.75);
-    font-weight: bolder;
-    border-radius: 14px;
-    box-shadow: 0 20px 25px -10px rgb(0 0 0 / 15%);
+  text-transform: uppercase;
+  padding: 10px 15px;
+  height: 20px;
+  margin: 5px;
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: bolder;
+  border-radius: 14px;
+  box-shadow: 0 20px 25px -10px rgb(0 0 0 / 15%);
 `;

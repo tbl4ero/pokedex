@@ -1,6 +1,5 @@
 import React from "react";
 import { statTypes } from "../../../constants";
-import AbilityPage from "../../abilitypage/AbilityPage";
 import { StyledBar, StyledStat, StatsBox, Image, PageContainer } from './Stats.styles';
 
 

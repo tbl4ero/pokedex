@@ -2,7 +2,6 @@ import React from "react";
 import CardList from "./components/pokecardlist/PokeCardList";
 import { BrowserRouter, Route } from "react-router-dom";
 import PokePage from "./components/pokepage/pokepage/PokePage";
-import AbilityPage from "./components/abilitypage/AbilityPage";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
@@ -27,7 +26,6 @@ const Main = () =>  (
       <BrowserRouter>
         <Route path="/" exact component={CardList} />
         <Route path="/pokemon/:name" component={PokePage} />
-        <Route path="/ability/:name" component={AbilityPage} />
       </BrowserRouter>
     }
   </div>

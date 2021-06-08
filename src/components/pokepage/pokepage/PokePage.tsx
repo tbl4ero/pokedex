@@ -20,31 +20,8 @@ const PokeComp = (props: any) => (
     }}>
       #{`${props.data.id}`.padStart(3, '0')}
     </h1>
+    
     <Stats pokemon={props.data} />
-    {/* <InfoTabs
-      tabs={[
-        {
-          title: 'ABILITIES',
-          content: 
-            <AbilitiesContainer>
-           {props.data.abilities.map((ability: any) => (
-            <StyledLink style={{ display: 'block' }} to={`/ability/${ability.ability.name}`}>
-              {ability.ability.name.split("-").join(" ")}
-            </StyledLink>
-          ))}
-          </AbilitiesContainer>
-        },
-        {
-          title: 'TYPES',
-          content: 
-              props.data.types.map((type: any) => (
-              <TypeElement type={type.type.name}>
-                {type.type.name}
-              </TypeElement>
-            ))
-        },
-      ]}
-    /> */}
   </>
 );
 
