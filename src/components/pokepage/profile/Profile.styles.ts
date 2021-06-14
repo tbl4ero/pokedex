@@ -36,3 +36,7 @@ export const ProfileElement = styled.div`
   border-radius: 14px;
   box-shadow: 0 20px 25px -10px rgb(0 0 0 / 15%);
 `;
+
+export const CenteredBox = styled.div`
+  margin: 0 auto;
+`;

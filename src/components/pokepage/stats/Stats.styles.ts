@@ -54,20 +54,6 @@ export const StatsBox = styled.div`
   }
 `;
 
-export const Image = styled.img`
-  margin-right: -80px;
-  position: relative;
-  z-index: 40;
-  @media (max-width: 1120px) {
-    max-height: 370px;
-    margin-right: -50px;
-  }
-  @media (max-width: 690px) {
-    margin-right: 0;
-    max-height: 300px;
-  }
-`;
-
 export const PageContainer = styled.div<{ direction?: string, align?: string, margin?: string }>`
   display: flex;
   margin: ${props => props.margin || '0 auto'};

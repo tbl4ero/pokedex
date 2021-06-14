@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
-import { typeColors } from "../../../constants";
+
 
 export const NameTitle = styled.h1`
   text-align: center;
@@ -13,29 +12,27 @@ export const NameTitle = styled.h1`
   }
 `;
 
-export const TypeElement = styled.div<{ type: string }>`
-  display: inline;  
-  padding: 8px;
-  background: ${(props) => typeColors[props.type]};
-  color: white;
-  font-size: 18px;
-  margin-left: 5px;
-  border-radius: 3px;
-`;
-
-export const AbilitiesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 15px; 
-`;
-
-export const StyledLink = styled(Link)`
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 1px 0;
-  :hover {
-    color: #f5f5f5;
+export const Image = styled.img`
+  margin-right: -80px;
+  position: relative;
+  z-index: 15;
+  @media (max-width: 1120px) {
+    max-height: 370px;
+    margin-right: -50px;
   }
+  @media (max-width: 690px) {
+    margin-right: 0;
+    max-height: 300px;
+  }
+`;
+
+export const PageContainer = styled.div<{ direction?: string, align?: string, margin?: string }>`
+  display: flex;
+  margin: ${props => props.margin || '0 auto'};
+  ${props => props.direction && `flex-direction: ${props.direction}` };
+  flex-wrap: wrap;
+  z-index: 15;
+  align-items: flex-start;
+  position: relative;
+  justify-content: ${props => props.align || 'center'};
 `;

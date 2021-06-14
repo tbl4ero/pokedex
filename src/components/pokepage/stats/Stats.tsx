@@ -1,6 +1,6 @@
 import React from "react";
 import { statTypes } from "../../../constants";
-import { StyledBar, StyledStat, StatsBox, Image, PageContainer } from './Stats.styles';
+import { StyledBar, StyledStat, StatsBox, PageContainer } from './Stats.styles';
 
 
 const StatBar: React.FC<{ statValue: number; statName: string }> = (props) => {
@@ -17,10 +17,6 @@ const Stats: React.FC<any> = (props) => {
   return (
     <React.Fragment>
      <PageContainer>
-        <Image
-            src={props.pokemon.sprites.other["official-artwork"].front_default}
-          />
-
         <StatsBox>
           <h1>STATS</h1>
           {props.pokemon.stats.map(
