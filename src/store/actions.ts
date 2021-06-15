@@ -14,13 +14,13 @@ export const setPokemon = (pokemon: any, localLoader: Function) => async (
   const speciesData = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)
     .then((resp => resp.json()));
   const bgColor = await prominent(pokemonData.sprites.other["official-artwork"].front_default).then(colors => colors[2].toString());
-  console.log(bgColor);
-    const data = { ...pokemonData, ...speciesData, bgColor };
-    dispatch({
-      type: "SET_POKEMON",
-      pokemon: data,
-    });
-    localLoader(false);
+  const abilities = await Promise.all(pokemonData.abilities.map((ability: any) => fetch(`https://pokeapi.co/api/v2/ability/${ability.ability.name}`).then(resp => resp.json())))
+  const data = { ...pokemonData, ...speciesData, bgColor, ads: abilities };
+  dispatch({
+    type: "SET_POKEMON",
+    pokemon: data,
+  });
+  localLoader(false);
 };
 
 export const setAbility = (ability: any, localLoader: Function) => async (
