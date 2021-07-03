@@ -2,25 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Spinner = ({ intersectionRef = null  }) => (
-  <StyledSpinner ref={intersectionRef} viewBox="0 0 50 50">
-    <circle
-      className="path"
-      cx="25"
-      cy="25"
-      r="20"
-      fill="none"
-      strokeWidth="4"
-      stroke="#fff"
-    />
+  <StyledSpinner ref={intersectionRef}>
+    <AnimatedCircle viewBox="0 0 50 50">
+      <circle
+        className="path"
+        cx="25"
+        cy="25"
+        r="20"
+        fill="none"
+        strokeWidth="4"
+        stroke="#fff"
+      />
+    </AnimatedCircle>
   </StyledSpinner>
+
 );
 
-const StyledSpinner = styled.svg`
+const StyledSpinner = styled.div`
+  width: 50px;
+  margin: 10px auto;
+`;
+
+const AnimatedCircle = styled.svg`
   animation: rotate 2s linear infinite;
-  margin: -25px 0 0 -25px;
   width: 50px;
   height: 50px;
-  margin: 40px auto;
   
   & .path {
     stroke: #5652BF;

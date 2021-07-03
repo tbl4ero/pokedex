@@ -6,4 +6,5 @@ export default interface StoreInterface  {
     count: number;
     list: any[];
   }
+  searchValue: string;
 }

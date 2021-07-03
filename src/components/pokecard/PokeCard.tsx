@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../../Spinner";
 import { useDispatch } from "react-redux";
 
-import { TypeElement, TypesContainer, NameTitle, StyledCard, StyledLink, IdContainer } from './PokeCard.styles'; 
+import {
+  TypesContainer,
+  NameTitle,
+  StyledCard,
+  StyledLink,
+  IdContainer,
+} from "./PokeCard.styles";
 import { setLoading } from "../../store/actions";
 
 const PokeCard: React.FC<any> = (props) => {
@@ -29,13 +35,16 @@ const PokeCard: React.FC<any> = (props) => {
               src={pokemon.sprites.other["official-artwork"].front_default}
             ></img>
             <NameTitle>{pokemon.name.toUpperCase()}</NameTitle>
-            <TypesContainer style={{ width: '100%' }}>
+            <TypesContainer style={{ width: "100%" }}>
               {pokemon.types.map((type: any) => (
-                  <img alt="" height="20" style={{ color: 'black', margin: '5px' }} src={`/icons/${type.type.name}.svg`} />
+                  <img
+                    alt=""
+                    height="20"
+                    style={{ color: "black", margin: "5px" }}
+                    src={`/icons/${type.type.name}.svg`}
+                  />
               ))}
-              <IdContainer>
-                #{`${pokemon.id}`.padStart(3, '0')}
-              </IdContainer>
+              <IdContainer>#{`${pokemon.id}`.padStart(3, "0")}</IdContainer>
             </TypesContainer>
           </StyledCard>
         </StyledLink>

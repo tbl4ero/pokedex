@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import PokeCard from "../pokecard/PokeCard";
@@ -14,20 +14,22 @@ interface PokemonList {
   url: string;
 }
 
-const CardList: React.FC<PokemonList> = (props) => {
-  const { pokemons, cardCount } = useSelector((state: StoreInterface) => ({
+const CardList = (props: PokemonList) => {
+  const { pokemons, cardCount, searchValue } = useSelector((state: StoreInterface) => ({
     pokemons: state.pokemonList.list,
     cardCount: state.pokemonList.count,
+    searchValue: state.searchValue
   }));
-  const [searchValue, setSearchValue] = useState("");
+
   const [loading, setLoading] = useState(true);
   const countRef = useRef<any>();
   countRef.current = cardCount;
   const dispatch = useDispatch();
-  const targetRef = useIntersection(
-    () => dispatch(getCards(setLoading, countRef.current)),
-    { threshold: 0.5 }
-  );
+  const [targetRef, inView] = useIntersection({ threshold: 0.5 });
+
+  useEffect(() => {
+    dispatch(getCards(setLoading, countRef.current));
+  }, [inView]);
 
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
@@ -40,8 +42,8 @@ const CardList: React.FC<PokemonList> = (props) => {
               <PokeCard key={pokemon.name} pokemon={pokemon} />
             ))}
         </CardGrid>
+        <Spinner intersectionRef={targetRef} />
       </StyledList>
-      <Spinner intersectionRef={targetRef} />
     </div>
   );
 };

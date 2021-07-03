@@ -28,6 +28,7 @@ const reducers = {
   currentAbility: sampleReducer(null, "ability", "SET_ABILITY"),
   pokemonList,
   loading: sampleReducer(true, "loading", "SET_LOADING"),
+  searchValue: sampleReducer("", "query", "SET_SEARCH_QUERY"),
 };
 
 export default reducers;

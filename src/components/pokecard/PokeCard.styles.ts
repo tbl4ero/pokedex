@@ -5,13 +5,15 @@ import { typeColors } from "../../constants";
 
 export const StyledCard = styled.div<{ background: string }>`
   border-radius: 14px;
+  box-sizing: border-box;
+  height: 100%;
   font-family: "Roboto";
   flex-direction: column;
   background: ${props => typeColors[props.background]};
   transition: 0.2s ease-in-out;
   display: flex;
   align-items: center;
-  box-shadow: 0px 0px 2px 0px rgba(209, 174, 209, 1);
+  box-shadow: 2px 4px 2px 1px rgb(209 174 209);
   padding: 15px;
   :hover {
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
@@ -36,13 +38,14 @@ export const StyledLink = styled(Link)`
 `;
 
 export const NameTitle = styled.h2`
-  margin-top: -40px;
+  text-align: center;
   letter-spacing: 5px;
   color: #fff;
   text-shadow: -2px 2px 1px black, 0 2px 1px black;
 `;
 
 export const TypesContainer = styled.div`
+  margin-top: auto;
   display: flex;
   align-self: flex-start;
 `;
