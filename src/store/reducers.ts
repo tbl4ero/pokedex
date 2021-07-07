@@ -13,12 +13,16 @@ interface PokemonList {
   list: any[];
 }
 
-const pokemonList = (state: PokemonList = { count: 0, list: []}, action: any) => {
+const pokemonList = (state: any[] = [], action: any) => {
   if (action.type === "SET_CARDS") {
-    return {
-      count: state.count+30,
-      list: [...state.list, ...action.cards]
-    };
+    return [...state, ...action.cards];
+  }
+  return state;
+}
+
+const displayedPokemonsList = (state: any[] = [], action: any) => {
+  if (action.type === "ADD_DISPLAY_POKEMONS") {
+    return [...state, action.pokemons];
   }
   return state;
 }

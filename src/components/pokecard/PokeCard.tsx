@@ -12,7 +12,7 @@ import {
 } from "./PokeCard.styles";
 import { setLoading } from "../../store/actions";
 
-const PokeCard: React.FC<any> = (props) => {
+const PokeCard = (props: any) => {
   const [pokemon, setLocalPokemon] = useState(null);
   const dispatch = useDispatch();
 
@@ -23,9 +23,10 @@ const PokeCard: React.FC<any> = (props) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       {pokemon ? (
         <StyledLink
+          hidden={props.hidden}
           onClick={() => dispatch(setLoading(true))}
           to={`pokemon/${pokemon.name}`}
         >
@@ -37,12 +38,12 @@ const PokeCard: React.FC<any> = (props) => {
             <NameTitle>{pokemon.name.toUpperCase()}</NameTitle>
             <TypesContainer style={{ width: "100%" }}>
               {pokemon.types.map((type: any) => (
-                  <img
-                    alt=""
-                    height="20"
-                    style={{ color: "black", margin: "5px" }}
-                    src={`/icons/${type.type.name}.svg`}
-                  />
+                <img
+                  alt=""
+                  height="20"
+                  style={{ color: "black", margin: "5px" }}
+                  src={`/icons/${type.type.name}.svg`}
+                />
               ))}
               <IdContainer>#{`${pokemon.id}`.padStart(3, "0")}</IdContainer>
             </TypesContainer>
@@ -51,7 +52,7 @@ const PokeCard: React.FC<any> = (props) => {
       ) : (
         <Spinner />
       )}
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import PokeCard from "../pokecard/PokeCard";
@@ -9,42 +9,46 @@ import { getCards } from "../../store/actions";
 import { StyledList, CardGrid } from "./PokeCardList.styles";
 import useIntersection from "../../hooks/useIntersection";
 
-interface PokemonList {
-  name: string;
-  url: string;
-}
-
-const CardList = (props: PokemonList) => {
-  const { pokemons, cardCount, searchValue } = useSelector((state: StoreInterface) => ({
-    pokemons: state.pokemonList.list,
-    cardCount: state.pokemonList.count,
-    searchValue: state.searchValue
+const CardList = () => {
+  const { pokemons, searchValue } = useSelector((state: StoreInterface) => ({
+    pokemons: state.pokemonList,
+    searchValue: state.searchValue,
   }));
 
+  const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  const countRef = useRef<any>();
-  countRef.current = cardCount;
   const dispatch = useDispatch();
-  const [targetRef, inView] = useIntersection({ threshold: 0.5 });
+  const [targetRef, inView] = useIntersection({ threshold: 1 });
 
   useEffect(() => {
-    dispatch(getCards(setLoading, countRef.current));
+    if (inView) {
+      setCount(count + 60);
+    }
   }, [inView]);
 
+  useEffect(() => {
+    dispatch(getCards(setLoading));
+  }, []);
+
   return (
-    <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
+    <>
       <Header />
       <StyledList>
         <CardGrid>
-          {pokemons
-            ?.filter((pokemon) => new RegExp(searchValue).test(pokemon.name))
-            .map((pokemon, id) => (
-              <PokeCard key={pokemon.name} pokemon={pokemon} />
-            ))}
+          {pokemons.slice(0, count).map((pokemon, id) => (
+            <PokeCard
+              hidden={
+                searchValue !== "" &&
+                !new RegExp(searchValue).test(pokemon.name)
+              }
+              key={pokemon.name}
+              pokemon={pokemon}
+            />
+          ))}
         </CardGrid>
         <Spinner intersectionRef={targetRef} />
       </StyledList>
-    </div>
+    </>
   );
 };
 

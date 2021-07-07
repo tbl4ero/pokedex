@@ -12,9 +12,9 @@ export const StyledHeader = styled.div<{
   width: 100%;
   box-sizing: border-box;
   box-shadow: none;
-  grid-template-columns: 100px auto 100px;
+  grid-template-columns: 10% auto 10%;
   ${(props) => {
-    console.log(props.inView, 'here');
+    // console.log(props.inView, 'here');
     return (
       !props.inView &&
       css`
@@ -28,7 +28,7 @@ export const StyledHeader = styled.div<{
       @media(max-width: 800px) {
         padding 20px 0;
         bottom: 0;
-        width: ${props.minimized ? "65px" : "100%"};
+        width: ${props.minimized ? "0" : "100%"};
       }`
     );
   }}

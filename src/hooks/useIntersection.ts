@@ -14,14 +14,14 @@ const useIntersection = (
 ) => {
 
   const targetRef = useRef<HTMLElement>();
-  const [inView, setInView] = useState(true);
+  const [inView, setInView] = useState(null);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if(entry.isIntersecting) {
-        setInView(true);
-      } else {
+      if (entry.intersectionRatio === 0) {
         setInView(false);
+      } else {
+        setInView(true);
       }
     });
   }, options);

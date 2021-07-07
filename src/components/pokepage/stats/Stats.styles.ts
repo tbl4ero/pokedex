@@ -50,7 +50,6 @@ export const StatsBox = styled.div`
   }
   @media (max-width: 1010px) {
     transform: none;
-
   }
 `;
 

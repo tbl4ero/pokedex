@@ -45,16 +45,28 @@ export const setAbility =
   };
 
 export const getCards =
-  (localLoader: Function, count: any) => async (dispatch: Function) => {
-    const list = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=30&offset=${count}`
-    ).then((resp) => resp.json());
-    dispatch({
-      type: "SET_CARDS",
-      cards: list.results,
-    });
+  (localLoader: Function) => async (dispatch: Function) => {
+    let localCounter = 0;
+    let localList = [];
+    const fetchAllPokemons: any = async () => {
+      if (localCounter >= 2000) {
+        return;
+      }
+      localList = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=60&offset=${localCounter}`
+      ).then((resp) => resp.json());
+      dispatch({
+        type: "SET_CARDS",
+        cards: localList.results,
+      });
+      localCounter += 60;
+      return fetchAllPokemons();
+    };
+    await fetchAllPokemons();
     localLoader(false);
   };
+
+// export const displayNewPokemons = (count) => ADD_DISPLAY_POKEMONS
 
 export const setSearchValue = (query: string) => ({
   type: "SET_SEARCH_QUERY",

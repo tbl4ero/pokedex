@@ -12,10 +12,7 @@ export interface StoreInterface  {
   loading: boolean,
   currentPokemon: any,
   currentAbility: any,
-  pokemonList: {
-    count: number;
-    list: any[];
-  },
+  pokemonList: any[],
 }
 declare global {
   interface Window {
