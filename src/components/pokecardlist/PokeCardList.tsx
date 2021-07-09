@@ -22,9 +22,14 @@ const CardList = () => {
 
   useEffect(() => {
     if (inView) {
-      setCount(count + 60);
+      setCount(count+50);
     }
+    console.log('asd');
   }, [inView]);
+
+  useEffect(() => {
+    setCount(50);
+  }, [searchValue]);
 
   useEffect(() => {
     dispatch(getCards(setLoading));
@@ -35,18 +40,15 @@ const CardList = () => {
       <Header />
       <StyledList>
         <CardGrid>
-          {pokemons.slice(0, count).map((pokemon, id) => (
-            <PokeCard
-              hidden={
-                searchValue !== "" &&
-                !new RegExp(searchValue).test(pokemon.name)
-              }
-              key={pokemon.name}
-              pokemon={pokemon}
-            />
-          ))}
+          {pokemons
+            .filter(({ name }) => new RegExp(searchValue).test(name))
+            .slice(0, count)
+            .map((pokemon) => (
+              <PokeCard key={pokemon.name} pokemon={pokemon} />
+            ))}
         </CardGrid>
-        <Spinner intersectionRef={targetRef} />
+        <div style={{ padding: '5px', margin: '10px 0'}} ref={targetRef}>
+        </div>
       </StyledList>
     </>
   );

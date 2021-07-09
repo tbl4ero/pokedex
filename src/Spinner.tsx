@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Spinner = ({ intersectionRef = null  }) => (
-  <StyledSpinner ref={intersectionRef}>
+const Spinner = () => (
+  <StyledSpinner>
     <AnimatedCircle viewBox="0 0 50 50">
       <circle
         className="path"

@@ -19,7 +19,7 @@ const Main = () =>  (
       minHeight: "100vh",
       background: '#EDEDED',
       display: "flex",
-      flexWrap: "wrap",
+      flexDirection: "column",
     }}
   >
     {

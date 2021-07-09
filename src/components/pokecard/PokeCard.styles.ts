@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { typeColors } from "../../constants";
+
+const feadIn = keyframes`
+  from {
+    opacity: 0;
+    margin-bottom: -20px;
+  }
+  to {
+    opacity: 1;
+    margin-bottom: 0;
+  }
+`;
 
 export const StyledCard = styled.div<{ background: string }>`
   border-radius: 14px;
@@ -15,6 +26,7 @@ export const StyledCard = styled.div<{ background: string }>`
   align-items: center;
   box-shadow: 2px 4px 2px 1px rgb(209 174 209);
   padding: 15px;
+  animation: ${feadIn} .3s ease-in-out;
   :hover {
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
   }

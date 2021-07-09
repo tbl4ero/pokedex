@@ -20,13 +20,6 @@ const pokemonList = (state: any[] = [], action: any) => {
   return state;
 }
 
-const displayedPokemonsList = (state: any[] = [], action: any) => {
-  if (action.type === "ADD_DISPLAY_POKEMONS") {
-    return [...state, action.pokemons];
-  }
-  return state;
-}
-
 const reducers = {
   currentPokemon: sampleReducer(null, "pokemon", "SET_POKEMON"),
   currentAbility: sampleReducer(null, "ability", "SET_ABILITY"),

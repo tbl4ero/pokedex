@@ -13,31 +13,26 @@ import {
 import { setLoading } from "../../store/actions";
 
 const PokeCard = (props: any) => {
-  const [pokemon, setLocalPokemon] = useState(null);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetch(props.pokemon.url)
-      .then((resp) => resp.json())
-      .then((data) => setLocalPokemon(data));
-  }, []);
 
   return (
     <>
-      {pokemon ? (
+      {props.pokemon ? (
         <StyledLink
           hidden={props.hidden}
           onClick={() => dispatch(setLoading(true))}
-          to={`pokemon/${pokemon.name}`}
+          to={`pokemon/${props.pokemon.name}`}
         >
-          <StyledCard background={pokemon.types[0].type.name}>
+          <StyledCard background={props.pokemon.types[0].type.name}>
             <img
-              height="120"
-              src={pokemon.sprites.other["official-artwork"].front_default}
+              height="130"
+              src={
+                props.pokemon.sprites.other["official-artwork"].front_default
+              }
             ></img>
-            <NameTitle>{pokemon.name.toUpperCase()}</NameTitle>
+            <NameTitle>{props.pokemon.name.toUpperCase()}</NameTitle>
             <TypesContainer style={{ width: "100%" }}>
-              {pokemon.types.map((type: any) => (
+              {props.pokemon.types.map((type: any) => (
                 <img
                   alt=""
                   height="20"
@@ -45,7 +40,9 @@ const PokeCard = (props: any) => {
                   src={`/icons/${type.type.name}.svg`}
                 />
               ))}
-              <IdContainer>#{`${pokemon.id}`.padStart(3, "0")}</IdContainer>
+              <IdContainer>
+                #{`${props.pokemon.id}`.padStart(3, "0")}
+              </IdContainer>
             </TypesContainer>
           </StyledCard>
         </StyledLink>

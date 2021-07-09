@@ -46,27 +46,36 @@ export const setAbility =
 
 export const getCards =
   (localLoader: Function) => async (dispatch: Function) => {
-    let localCounter = 0;
-    let localList = [];
+    let counter = 0;
     const fetchAllPokemons: any = async () => {
-      if (localCounter >= 2000) {
+      if (counter >= 1150) {
         return;
       }
-      localList = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=60&offset=${localCounter}`
+      const { results } = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${counter}`
       ).then((resp) => resp.json());
+      let list = await Promise.all([
+        ...results.map((url: any) =>
+          fetch(url.url).then((resp) => resp.json())
+        ),
+      ]);
+      list = list.map(({ name, types, sprites, id }: any) => ({
+        name,
+        types,
+        sprites,
+        id,
+      }));
       dispatch({
         type: "SET_CARDS",
-        cards: localList.results,
+        cards: list,
       });
-      localCounter += 60;
+
+      counter += 50;
       return fetchAllPokemons();
     };
-    await fetchAllPokemons();
+    fetchAllPokemons();
     localLoader(false);
   };
-
-// export const displayNewPokemons = (count) => ADD_DISPLAY_POKEMONS
 
 export const setSearchValue = (query: string) => ({
   type: "SET_SEARCH_QUERY",

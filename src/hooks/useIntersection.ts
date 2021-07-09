@@ -9,10 +9,9 @@ interface IntersectionObserverOptions {
 
 const useIntersection = (
   options: IntersectionObserverOptions = {
-    shouldBeHidden: false
+    shouldBeHidden: false,
   }
 ) => {
-
   const targetRef = useRef<HTMLElement>();
   const [inView, setInView] = useState(null);
 
@@ -21,6 +20,7 @@ const useIntersection = (
       if (entry.intersectionRatio === 0) {
         setInView(false);
       } else {
+        console.log(1);
         setInView(true);
       }
     });
