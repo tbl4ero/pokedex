@@ -6,6 +6,7 @@ export const NameTitle = styled.h1`
   font-size: 80px;
   margin-bottom: 0;
   color: white;
+  margin-top: 7px;
   text-shadow: 0 0 12px rgb(0 0 0 / 25%);
   @media (max-width: 640px) {
     font-size: 60px;
@@ -15,7 +16,6 @@ export const NameTitle = styled.h1`
 export const Image = styled.img`
   margin-right: -80px;
   position: relative;
-  z-index: 15;
   @media (max-width: 1120px) {
     max-height: 370px;
     margin-right: -50px;

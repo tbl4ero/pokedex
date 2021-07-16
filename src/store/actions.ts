@@ -45,7 +45,7 @@ export const setAbility =
   };
 
 export const getCards =
-  (localLoader: Function) => async (dispatch: Function) => {
+  () => async (dispatch: Function) => {
     let counter = 0;
     const fetchAllPokemons: any = async () => {
       if (counter >= 1150) {
@@ -74,7 +74,6 @@ export const getCards =
       return fetchAllPokemons();
     };
     fetchAllPokemons();
-    localLoader(false);
   };
 
 export const setSearchValue = (query: string) => ({

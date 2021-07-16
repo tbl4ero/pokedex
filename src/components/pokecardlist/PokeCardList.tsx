@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import PokeCard from "../pokecard/PokeCard";
-import Spinner from "../../Spinner";
 import Header from "./header/Header";
 import StoreInterface from "../../types/store.interface";
 import { getCards } from "../../store/actions";
@@ -16,7 +15,6 @@ const CardList = () => {
   }));
 
   const [count, setCount] = useState(0);
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const [targetRef, inView] = useIntersection({ threshold: 1 });
 
@@ -24,7 +22,6 @@ const CardList = () => {
     if (inView) {
       setCount(count+50);
     }
-    console.log('asd');
   }, [inView]);
 
   useEffect(() => {
@@ -32,7 +29,9 @@ const CardList = () => {
   }, [searchValue]);
 
   useEffect(() => {
-    dispatch(getCards(setLoading));
+    if(pokemons.length === 0) {
+      dispatch(getCards());
+    }
   }, []);
 
   return (

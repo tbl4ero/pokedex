@@ -14,7 +14,7 @@ export const PageContainer = styled.div<{ bg?: string }>`
     display: flex;
     flex-direction: column;
     width: 100%;
-    animation: ${(props) => bgAnimation(props.bg)} .5s ease-in-out;
+    animation: ${(props) => bgAnimation(props.bg)} .8s ease-in-out;
     background-color: rgb(${props => props.bg});
 `;
 

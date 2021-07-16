@@ -1,32 +1,32 @@
 import React from "react";
+import { Radar } from "react-chartjs-2";
+
+import statsConfig from "./Stats.config";
 import { statTypes } from "../../../constants";
-import { StyledBar, StyledStat, StatsBox, PageContainer } from './Stats.styles';
-
-
-const StatBar: React.FC<{ statValue: number; statName: string }> = (props) => {
-  return (
-    <StyledStat>
-      <div style={{ width: "120px", textShadow: '0 0 12px rgb(0 0 0 / 5%)'}}>{statTypes[props.statName]}</div>
-      <StyledBar statValue={props.statValue} />
-      {props.statValue}
-    </StyledStat>
-  );
-};
+import { ChartContainer } from "./Stats.styles";
 
 const Stats: React.FC<any> = (props) => {
+  const radarData = props.pokemon.stats.reduce((accum: any, current: any) => {
+    return { ...accum, [statTypes[current.stat.name]]: current.base_stat };
+  }, {});
+  const newRadarData = {
+    labels: [...Object.keys(radarData)],
+    datasets: [
+      {
+        backgroundColor: "rgba(255,255,255,.55)",
+        borderColor: "rgb(255,255,255)",
+        pointBackgroundColor: "rgb(255,255,255)",
+        pointHitRadius: 5,
+        pointRadius: 4,
+        data: [...Object.values(radarData)],
+      },
+    ],
+  };
+  
   return (
-    <React.Fragment>
-     <PageContainer>
-        <StatsBox>
-          <h1>STATS</h1>
-          {props.pokemon.stats.map(
-            (stat: { base_stat: number; stat: { name: string } }) => (
-              <StatBar statValue={stat.base_stat} statName={stat.stat.name} />
-            )
-          )}
-        </StatsBox>
-      </PageContainer>
-    </React.Fragment>
+    <ChartContainer>
+      <Radar type="radar" data={newRadarData} options={statsConfig} />
+    </ChartContainer>
   );
 };
 

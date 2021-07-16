@@ -25,10 +25,10 @@ export const typeColors: {
     [key: string]: string
   } = {
     hp: "HP",
-    attack: "Attack",
-    defense: "Defense",
-    "special-attack": "Sp. Attack",
-    "special-defense": "Sp. Defense",
+    attack: "ATK",
+    defense: "DEF",
+    "special-attack": "Sp. ATK",
+    "special-defense": "Sp. DEF",
     speed: "Speed",
   };
 
