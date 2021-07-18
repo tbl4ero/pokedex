@@ -1,6 +1,11 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faTimes, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 
 import useHover from "../../../hooks/useHover";
+
+
 
 import {
   PageContainer,
@@ -34,9 +39,9 @@ const AbilityTooltip = (props: any) => {
             position: "absolute",
             left: `${cursorPos.x - 10}px`,
             bottom: `${-cursorPos.y}px`,
-            width: '220px',
+            width: "220px",
             color: "black",
-            transform: "translate(0, -40px)",
+            transform: "translate(-40px, -40px)",
             padding: "10px",
             background: "#FFFFFF",
             borderRadius: "4px",
@@ -44,7 +49,13 @@ const AbilityTooltip = (props: any) => {
           }}
         >
           <div>
-            <h4 style={{ margin: 0, marginBottom: '10px' }}>{props.tooltipTitle}</h4>
+            <div style={{ display: "flex" }}>
+              <h4 style={{ margin: 0, marginTop: 'auto' }}>
+                {props.tooltipTitle}
+              </h4>{" "}
+
+              <FontAwesomeIcon icon={faWindowClose} />
+            </div>
             {props.tooltipDescription}
           </div>
         </div>
@@ -115,10 +126,12 @@ const Profile = (props: any) => {
             >
               <AbilityTooltip
                 tooltipTitle={ability.name}
-                tooltipDescription={ability.effect_entries.filter(
-                  (entry: { language: { name: string } }) =>
-                    entry.language.name === "en"
-                )[0].short_effect}
+                tooltipDescription={
+                  ability.effect_entries.filter(
+                    (entry: { language: { name: string } }) =>
+                      entry.language.name === "en"
+                  )[0].short_effect
+                }
               >
                 {ability.name}
               </AbilityTooltip>

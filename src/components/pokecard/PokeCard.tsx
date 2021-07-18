@@ -13,10 +13,7 @@ import {
 const PokeCard = (props: any) => (
   <>
     {props.pokemon ? (
-      <StyledLink
-        hidden={props.hidden}
-        to={`pokemon/${props.pokemon.name}`}
-      >
+      <StyledLink hidden={props.hidden} to={`pokemon/${props.pokemon.name}`}>
         <StyledCard background={props.pokemon.types[0].type.name}>
           <img
             height="130"

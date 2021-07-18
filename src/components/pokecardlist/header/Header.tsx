@@ -4,8 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import useIntersection from "../../../hooks/useIntersection";
-import { SearchField, StyledHeader, ToggleButton } from "./Header.styles";
-import { setSearchValue } from '../../../store/actions';
+import {
+  SearchField,
+  StyledHeader,
+  ToggleButton,
+  SearchFieldBox,
+  HeaderContainer,
+} from "./Header.styles";
+import { setSearchValue } from "../../../store/actions";
 import StoreInterface from "../../../types/store.interface";
 
 const Header = () => {
@@ -19,26 +25,30 @@ const Header = () => {
   }) as any[];
 
   return (
-    <div style={{height: '70px', width: '100%'}} ref={targetRef}>
+    <HeaderContainer ref={targetRef}>
       <StyledHeader inView={inView} minimized={minimized}>
         <div>
-        <ToggleButton
+          <ToggleButton
             minimized={minimized}
             inView={inView}
             onClick={() => !inView && minimize(!minimized)}
           />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <FontAwesomeIcon icon={faSearch} color="#000" alignmentBaseline="central" opacity="0.4" />
+        <SearchFieldBox inView={inView} minimized={minimized}>
+          <FontAwesomeIcon
+            icon={faSearch}
+            color="#000"
+            alignmentBaseline="central"
+            opacity="0.4"
+          />
           <SearchField
             defaultValue={searchValue}
             onChange={(e) => dispatch(setSearchValue(e.target.value))}
             placeholder="Search pokemon..."
           />
-        </div>
+        </SearchFieldBox>
       </StyledHeader>
-    </div>
-      
+    </HeaderContainer>
   );
 };
 

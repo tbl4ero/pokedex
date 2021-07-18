@@ -12,8 +12,8 @@ const useHover = (trackCursor = false) => {
         if (trackCursor) {
           const { left, top } = evt.currentTarget.getBoundingClientRect();
           setCursorPos({
-            x: evt.pageX - left,
-            y: evt.pageY - top,
+            x: evt.clientX - left,
+            y: evt.clientY - top,
           });
         }
       },

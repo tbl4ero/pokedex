@@ -1,34 +1,42 @@
 import styled, { keyframes, css } from "styled-components";
 
+export const HeaderContainer = styled.div`
+  height: 100px;
+  width: 100%;
+`;
+
 export const StyledHeader = styled.div<{
   inView: boolean;
   minimized: boolean;
 }>`
   display: grid;
   padding: 20px 0;
+  -webkit-overflow-scrolling: touch;
+  touch-action: none;
   position: ${(props) => !props.inView && "fixed"};
   transition: 0.3s ease-in-out;
   cursor: ${(props) => !props.inView && "pointer"};
   width: 100%;
+  height: 70px;
   box-sizing: border-box;
   box-shadow: none;
   grid-template-columns: 10% auto 10%;
   ${(props) => {
-    // console.log(props.inView, 'here');
     return (
       !props.inView &&
       css`
-      overflow: hidden;
+      overflow-x: hidden;
       padding ${props.minimized && "0px"};
       background: ${!props.minimized && "#EDEDED"};
       box-shadow: ${!props.minimized && "0px -1px 18px 7px rgba(0,0,0,0.65)"};
       @media(min-width: 800px) {
-        height: ${props.minimized && "0px"};
+        height: ${props.minimized && "70px"};
       }
       @media(max-width: 800px) {
         padding 20px 0;
         bottom: 0;
-        width: ${props.minimized ? "0" : "100%"};
+        clip: ${props.minimized && "rect(auto, auto, auto, auto)"};
+
       }`
     );
   }}
@@ -58,6 +66,15 @@ export const SearchField = styled.input`
   :hover {
     border-bottom: 1px solid rgba(0, 0, 0, 0.8);
   }
+`;
+
+export const SearchFieldBox = styled.div<{
+  inView: boolean;
+  minimized: boolean;
+}>`
+  display: ${(props) => (!props.inView && props.minimized ? "none" : "flex")};
+  justify-content: center;
+  align-items: center;
 `;
 
 const pokeballBeforeAnimation = keyframes`

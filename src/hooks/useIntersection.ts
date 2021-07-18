@@ -20,7 +20,6 @@ const useIntersection = (
       if (entry.intersectionRatio === 0) {
         setInView(false);
       } else {
-        console.log(1);
         setInView(true);
       }
     });
