@@ -11,7 +11,7 @@ import {
   SearchFieldBox,
   HeaderContainer,
 } from "./Header.styles";
-import { setSearchValue } from "../../../store/actions";
+import setSearchValue from "../../../store/actions/serSearchValue";
 import StoreInterface from "../../../types/store.interface";
 
 const Header = () => {

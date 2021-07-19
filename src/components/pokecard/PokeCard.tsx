@@ -9,19 +9,20 @@ import {
   StyledLink,
   IdContainer,
 } from "./PokeCard.styles";
+import { PokemonCard } from "./PokeCard.types";
 
-const PokeCard = (props: any) => (
+const PokeCard = (props: PokemonCard) => (
   <>
-    {props.pokemon ? (
-      <StyledLink hidden={props.hidden} to={`pokemon/${props.pokemon.name}`}>
-        <StyledCard background={props.pokemon.types[0].type.name}>
+    {props.name ? (
+      <StyledLink to={`pokemon/${props.name}`}>
+        <StyledCard background={props.types[0].type.name}>
           <img
             height="130"
-            src={props.pokemon.sprites.other["official-artwork"].front_default}
+            src={props.sprites.other["official-artwork"].front_default}
           ></img>
-          <NameTitle>{props.pokemon.name.toUpperCase()}</NameTitle>
+          <NameTitle>{props.name.toUpperCase()}</NameTitle>
           <TypesContainer>
-            {props.pokemon.types.map((type: any) => (
+            {props.types.map((type) => (
               <img
                 alt=""
                 height="20"
@@ -29,7 +30,7 @@ const PokeCard = (props: any) => (
                 src={`/icons/${type.type.name}.svg`}
               />
             ))}
-            <IdContainer>#{`${props.pokemon.id}`.padStart(3, "0")}</IdContainer>
+            <IdContainer>#{`${props.id}`.padStart(3, "0")}</IdContainer>
           </TypesContainer>
         </StyledCard>
       </StyledLink>

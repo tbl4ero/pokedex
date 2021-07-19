@@ -17,8 +17,15 @@ import {
   AbilityList,
   ProfileList,
 } from "./Profile.styles";
+import { Pokemon } from "../PokePage.types";
 
-const AbilityTooltip = (props: any) => {
+interface TooltipProps {
+  tooltipTitle: string;
+  tooltipDescription: string;
+  children: string;
+}
+
+const AbilityTooltip = (props: TooltipProps) => {
   const { isHovered, hoverOptions, cursorPos } = useHover(true);
   const [tooltipHidden, hideTooltip] = useState(false);
 
@@ -41,25 +48,25 @@ const AbilityTooltip = (props: any) => {
   );
 };
 
-const Profile = (props: any) => {
+const Profile = (props: Pokemon) => {
   return (
     <PageContainer direction="column" margin="0">
       <PageContainer align="flex-start" margin="20px 0">
-        {props.pokemon.types.map((type: any) => (
+        {props.types.map((type) => (
           <TypeElement type={type.type.name}>
             <img height="20" src={`/icons/${type.type.name}.svg`} />
           </TypeElement>
         ))}
       </PageContainer>
       <ProfileList>
-        <ProfileElement>Weight: {props.pokemon.weight}</ProfileElement>
-        <ProfileElement>Height: {props.pokemon.height}</ProfileElement>
-        <ProfileElement>Area: {props.pokemon.habitat.name}</ProfileElement>
+        <ProfileElement>Weight: {props.weight}</ProfileElement>
+        <ProfileElement>Height: {props.height}</ProfileElement>
+        <ProfileElement>Area: {props.habitat.name}</ProfileElement>
       </ProfileList>
       <CenteredBox>
         <AbilityTitle>ABILIITIES:</AbilityTitle>
         <AbilityList>
-          {props.pokemon.ads.map((ability: any, id: number) => (
+          {props.ads.map((ability, id: number) => (
             <AbilityTooltip
               tooltipTitle={ability.name}
               tooltipDescription={

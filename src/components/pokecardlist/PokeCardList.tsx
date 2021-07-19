@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PokeCard from "../pokecard/PokeCard";
 import Header from "./header/Header";
 import StoreInterface from "../../types/store.interface";
-import { getCards } from "../../store/actions";
+import { getCards } from "../../store/actions/thunks/actions";
 import { StyledList, CardGrid } from "./PokeCardList.styles";
 import useIntersection from "../../hooks/useIntersection";
 
@@ -43,7 +43,7 @@ const CardList = () => {
             .filter(({ name }) => new RegExp(searchValue).test(name))
             .slice(0, count)
             .map((pokemon) => (
-              <PokeCard key={pokemon.name} pokemon={pokemon} />
+              <PokeCard key={pokemon.name} {...pokemon} />
             ))}
         </CardGrid>
         <div style={{ padding: '5px', margin: '10px 0'}} ref={targetRef}>

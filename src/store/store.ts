@@ -6,14 +6,10 @@ import {
   Store,
 } from "redux";
 import thunk from "redux-thunk";
+
 import reducers from "./reducers";
 
-export interface StoreInterface  {
-  loading: boolean,
-  currentPokemon: any,
-  currentAbility: any,
-  pokemonList: any[],
-}
+import StoreInterface from '../types/store.interface';
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

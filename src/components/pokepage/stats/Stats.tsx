@@ -4,9 +4,10 @@ import { Radar } from "react-chartjs-2";
 import statsConfig from "./Stats.config";
 import { statTypes } from "../../../constants";
 import { ChartContainer } from "./Stats.styles";
+import { Pokemon, Stat } from "../PokePage.types";
 
-const Stats = (props: any) => {
-  const radarData = props.pokemon.stats.reduce((accum: any, current: any) => {
+const Stats = (props: Pokemon) => {
+  const radarData = props.stats.reduce((accum: { [key: string]: number }, current: Stat) => {
     return { ...accum, [statTypes[current.stat.name]]: current.base_stat };
   }, {});
   const newRadarData = {

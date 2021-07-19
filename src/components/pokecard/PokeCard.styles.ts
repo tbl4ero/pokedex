@@ -45,9 +45,8 @@ export const TypeElement = styled.div<{ type: string }>`
   border-radius: 8px;
 `;
 
-export const StyledLink = styled(Link)<{ hidden: boolean }>`
+export const StyledLink = styled(Link)`
   text-decoration: none;
-  display: ${props => props.hidden ? 'none' : 'inline'};
 `;
 
 export const NameTitle = styled.h2`

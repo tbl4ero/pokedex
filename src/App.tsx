@@ -5,13 +5,6 @@ import PokePage from "./components/pokepage/pokepage/PokePage";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
-export interface StoreInterface  {
-  loading: boolean,
-  currentPokemon: any,
-  currentAbility: any,
-  pokemonList: any[],
-}
-
 const Main = () =>  (
   <div
     style={{

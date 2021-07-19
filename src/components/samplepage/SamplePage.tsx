@@ -8,6 +8,9 @@ import {
   Container,
   SpinnerContainer,
 } from "./SamplePage.styles";
+import { SamplePageProps } from "./SamplePage.interface";
+import StoreInterface from "../../types/store.interface";
+import { Pokemon } from "../pokepage/PokePage.types";
 
 const SamplePage = ({
   WrappedComponent,
@@ -15,16 +18,19 @@ const SamplePage = ({
   setData,
   history,
   selector,
-}: any) => {
+}: SamplePageProps) => {
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
-  const { data } = useSelector((state: any) => ({
+  // @ts-ignore
+  const { data }: Pokemon  = useSelector((state: StoreInterface) => ({
+  // @ts-ignore
     data: state[selector],
   }));
 
   useEffect(() => {
-    dispatch(setData(match.params.name, setLoading));
+    // @ts-ignore
+    dispatch(setData(match.params.name));
   }, []);
 
   return (
@@ -34,7 +40,7 @@ const SamplePage = ({
           <Spinner />
         </SpinnerContainer>
       ) : (
-        <PageContainer bg={data.bgColor}>
+        <PageContainer bg={data.color}>
           <GoBack route={history.goBack} />
           <Container>
             <WrappedComponent {...{ match, setData, history, data }} />

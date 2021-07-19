@@ -1,3 +1,6 @@
+import { PokemonCard } from "../components/pokecard/PokeCard.types";
+import { SetCardsAction } from "./actions/setCards";
+
 const sampleReducer = (initialState: any, actionKey: string, type: string) => (
   state = initialState,
   action: any
@@ -9,7 +12,7 @@ const sampleReducer = (initialState: any, actionKey: string, type: string) => (
 };
 
 
-const pokemonList = (state: any[] = [], action: any) => {
+const pokemonList = (state: PokemonCard[] = [], action: SetCardsAction) => {
   if (action.type === "SET_CARDS") {
     return [...state, ...action.cards];
   }
