@@ -17,8 +17,8 @@ const Main = () =>  (
   >
     {
       <BrowserRouter>
-        <Route path="/" exact component={CardList} />
-        <Route path="/pokemon/:name" component={PokePage} />
+        <Route path="/pokedex/" exact component={CardList} />
+        <Route path="/pokedex/pokemon/:name" component={PokePage} />
       </BrowserRouter>
     }
   </div>

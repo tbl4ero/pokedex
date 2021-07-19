@@ -22,13 +22,13 @@ export const setPokemon =
       pokemonData.sprites.other["official-artwork"].front_default
     ).then((colors) => colors[2].toString());
 
-    const abilities = await Promise.all(
-      pokemonData.abilities.map((ability: Ability) =>
-        jsonifyResponse(
-          `https://pokeapi.co/api/v2/ability/${ability.name}`
-        )
-      )
-    );
+    const abilities = await Promise.all([
+      ...pokemonData.abilities.map((ability: { ability: Ability }) => {
+        return jsonifyResponse(
+          `https://pokeapi.co/api/v2/ability/${ability.ability.name}`
+        );
+      }),
+    ]);
 
     const data = { ...pokemonData, ...speciesData, bgColor, ads: abilities };
 
@@ -37,30 +37,31 @@ export const setPokemon =
     localLoader(false);
   };
 
-export const getCards = () => async (dispatch: ThunkDispatch<StoreInterface, {}, SetCardsAction>) => {
-  let counter = 0;
+export const getCards =
+  () => async (dispatch: ThunkDispatch<StoreInterface, {}, SetCardsAction>) => {
+    let counter = 0;
 
-  const fetchAllPokemons: () => Promise<PokemonCard[]> = async () => {
-    if (counter >= 1150) {
-      return;
-    }
-    const { results } = await jsonifyResponse(
-      `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${counter}`
-    );
-    let list = await Promise.all([
-      ...results.map((url: { url: string }) => jsonifyResponse(url.url)),
-    ]);
-    list = list.map(({ name, types, sprites, id }: PokemonCard) => ({
-      name,
-      types,
-      sprites,
-      id,
-    }));
-    dispatch(setCards(list));
+    const fetchAllPokemons: () => Promise<PokemonCard[]> = async () => {
+      if (counter >= 1150) {
+        return;
+      }
+      const { results } = await jsonifyResponse(
+        `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${counter}`
+      );
+      let list = await Promise.all([
+        ...results.map((url: { url: string }) => jsonifyResponse(url.url)),
+      ]);
+      list = list.map(({ name, types, sprites, id }: PokemonCard) => ({
+        name,
+        types,
+        sprites,
+        id,
+      }));
+      dispatch(setCards(list));
 
-    counter += 50;
-    return fetchAllPokemons();
+      counter += 50;
+      return fetchAllPokemons();
+    };
+
+    fetchAllPokemons();
   };
-
-  fetchAllPokemons();
-};

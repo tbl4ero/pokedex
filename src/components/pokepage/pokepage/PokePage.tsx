@@ -8,21 +8,17 @@ import SamplePage from "../../samplepage/SamplePage";
 import { Pokemon } from "../PokePage.types";
 import { SamplePageProps } from "../../samplepage/SamplePage.interface";
 
-const PokeComp = (props: Pokemon) => {
-  return (
-    <>
-      <NameTitle>{props.name}</NameTitle>
-      <IDTitle>#{`${props.id}`.padStart(3, "0")}</IDTitle>
-      <PageContainer>
-        <Profile {...props} />
-        <Image
-          src={props.sprites.other["official-artwork"].front_default}
-        />
-        <Stats {...props} />
-      </PageContainer>
-    </>
-  );
-};
+const PokeComp = (props: Pokemon) => (
+  <>
+    <NameTitle>{props.name}</NameTitle>
+    <IDTitle>#{`${props.id}`.padStart(3, "0")}</IDTitle>
+    <PageContainer>
+      <Profile {...props} />
+      <Image src={props.sprites.other["official-artwork"].front_default} />
+      <Stats {...props} />
+    </PageContainer>
+  </>
+);
 
 const PokePage = (props: SamplePageProps) => (
   <SamplePage

@@ -30,7 +30,7 @@ const SamplePage = ({
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(setData(match.params.name));
+    dispatch(setData(match.params.name, setLoading));
   }, []);
 
   return (
@@ -40,10 +40,10 @@ const SamplePage = ({
           <Spinner />
         </SpinnerContainer>
       ) : (
-        <PageContainer bg={data.color}>
+        <PageContainer bg={data.bgColor}>
           <GoBack route={history.goBack} />
           <Container>
-            <WrappedComponent {...{ match, setData, history, data }} />
+            <WrappedComponent {...data} />
           </Container>
         </PageContainer>
       )}
