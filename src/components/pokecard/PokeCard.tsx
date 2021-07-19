@@ -14,7 +14,7 @@ import { PokemonCard } from "./PokeCard.types";
 const PokeCard = (props: PokemonCard) => (
   <>
     {props.name ? (
-      <StyledLink to={`/pokemon/${props.name}`}>
+      <StyledLink to={`/pokedex/pokemon/${props.name}`}>
         <StyledCard background={props.types[0].type.name}>
           <img
             height="130"
@@ -27,7 +27,7 @@ const PokeCard = (props: PokemonCard) => (
                 alt=""
                 height="20"
                 style={{ color: "black", margin: "5px" }}
-                src={`pokedex/icons/${type.type.name}.svg`}
+                src={`/pokedex/icons/${type.type.name}.svg`}
               />
             ))}
             <IdContainer>#{`${props.id}`.padStart(3, "0")}</IdContainer>
