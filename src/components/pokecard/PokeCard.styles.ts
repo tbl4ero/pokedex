@@ -61,6 +61,7 @@ export const TypesContainer = styled.div`
   margin-top: auto;
   display: flex;
   align-self: flex-start;
+  width: 100%;
 `;
 
 export const IdContainer = styled.div`

@@ -8,10 +8,6 @@ const sampleReducer = (initialState: any, actionKey: string, type: string) => (
   return state;
 };
 
-interface PokemonList {
-  count: number;
-  list: any[];
-}
 
 const pokemonList = (state: any[] = [], action: any) => {
   if (action.type === "SET_CARDS") {

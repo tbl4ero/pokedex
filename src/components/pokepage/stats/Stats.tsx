@@ -5,7 +5,7 @@ import statsConfig from "./Stats.config";
 import { statTypes } from "../../../constants";
 import { ChartContainer } from "./Stats.styles";
 
-const Stats: React.FC<any> = (props) => {
+const Stats = (props: any) => {
   const radarData = props.pokemon.stats.reduce((accum: any, current: any) => {
     return { ...accum, [statTypes[current.stat.name]]: current.base_stat };
   }, {});

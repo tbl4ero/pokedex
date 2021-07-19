@@ -20,7 +20,7 @@ const PokeCard = (props: any) => (
             src={props.pokemon.sprites.other["official-artwork"].front_default}
           ></img>
           <NameTitle>{props.pokemon.name.toUpperCase()}</NameTitle>
-          <TypesContainer style={{ width: "100%" }}>
+          <TypesContainer>
             {props.pokemon.types.map((type: any) => (
               <img
                 alt=""
