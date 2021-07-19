@@ -27,7 +27,7 @@ const PokeCard = (props: PokemonCard) => (
                 alt=""
                 height="20"
                 style={{ color: "black", margin: "5px" }}
-                src={`/pokedex/icons/${type.type.name}.svg`}
+                src={`/icons/${type.type.name}.svg`}
               />
             ))}
             <IdContainer>#{`${props.id}`.padStart(3, "0")}</IdContainer>

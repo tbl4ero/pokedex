@@ -54,7 +54,7 @@ const Profile = (props: Pokemon) => {
       <PageContainer align="flex-start" margin="20px 0">
         {props.types.map((type) => (
           <TypeElement type={type.type.name}>
-            <img height="20" src={`/pokedex/icons/${type.type.name}.svg`} />
+            <img height="20" src={`/icons/${type.type.name}.svg`} />
           </TypeElement>
         ))}
       </PageContainer>
