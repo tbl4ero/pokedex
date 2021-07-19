@@ -14,7 +14,7 @@ import { PokemonCard } from "./PokeCard.types";
 const PokeCard = (props: PokemonCard) => (
   <>
     {props.name ? (
-      <StyledLink to={`pokedex/pokemon/${props.name}`}>
+      <StyledLink to={`/pokemon/${props.name}`}>
         <StyledCard background={props.types[0].type.name}>
           <img
             height="130"
